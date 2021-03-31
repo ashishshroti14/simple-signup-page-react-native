@@ -3,6 +3,8 @@ import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import SignupPage from './screens/SignupPage';
+import Success from './screens/Success';
 
 export default function App() {
   const RootStack = createStackNavigator();
@@ -11,12 +13,12 @@ export default function App() {
   const MainStackScreen = () => {
     return (
       <MainStack.Navigator>
-        <MainStack.Screen name="Home" component={Home} />
         <MainStack.Screen
-          name="ColorPalette"
-          component={ColorPalette}
-          options={({ route }) => ({ title: route.params.paletteName })}
+          name="SignupPage"
+          component={SignupPage}
+          options={{ headerShown: false }}
         />
+        <MainStack.Screen name="Success" component={Success} />
       </MainStack.Navigator>
     );
   };
@@ -28,11 +30,11 @@ export default function App() {
           component={MainStackScreen}
           options={{ headerShown: false }}
         />
-        <RootStack.Screen
+        {/* <RootStack.Screen
           name="ColorPaletteModal"
           component={ColorPaletteModal}
           // options={{ headerShown: false }}
-        />
+        /> */}
       </RootStack.Navigator>
     </NavigationContainer>
   );
